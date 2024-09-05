@@ -17,7 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -43,8 +43,10 @@ interface SideMenuItem {
 
 export function HomeLayout() {
   const user = null;
-  const pathname = useLocation();
-  const navigate = useNavigate();
+  const location = useLocation(); // Get the location object
+  const pathname = location.pathname; // Extract the pathname
+
+
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [xOffset, setXOffset] = useState<number>(0);
 
@@ -265,3 +267,4 @@ export function HomeLayout() {
     </div>
   );
 }
+

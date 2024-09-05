@@ -1,9 +1,10 @@
-import User from "@/components/user/User";
+import Product from "@/components/shared/Product/Product";
+
 
 
 const Home = () => {
   return <div>
-    <User/>
+   <Product/>
   </div>;
 };
 
