@@ -38,7 +38,8 @@ const loginUser = async (payload: TLoginUser) => {
 
   const jwtPayload = {
     email: user.email,
-    role: user.role as string
+    role: user.role as string,
+    profilePhoto:user.profilePhoto
     
   };
 
@@ -85,7 +86,8 @@ const refreshToken = async (token: string) => {
 
   const jwtPayload = {
     email: user?.email,
-    role: user?.role as string
+    role: user?.role as string,
+    profilePhoto: user.profilePhoto,
   };
 
   const accessToken = createToken(

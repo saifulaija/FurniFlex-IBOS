@@ -20,6 +20,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PasswordInput } from "@/components/shared/PasswordInput/PasswordInput";
 import { Checkbox } from "@/components/ui/checkbox";
+import axiosInstance from "@/utils/axiosInstance";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -42,18 +43,34 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsLoading(true);
-    try {
-      // Example API call logic
-      toast.success("User added successfully", { position: "bottom-left" });
-      navigate("/");
-    } catch (err: any) {
-      toast.error(err?.message, { position: "bottom-left" });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
+
+ const onSubmit = async (values: z.infer<typeof formSchema>) => {
+   setIsLoading(true);
+   try {
+     const response = await axiosInstance.post(
+       "/auth/login",
+       values
+     );
+     const { success, message, data } = response.data;
+
+     if (success) {
+       toast.success(message, { position: "bottom-left" });
+       // Store the access token (for example, in localStorage)
+       localStorage.setItem("accessToken", data.accessToken);
+       navigate("/");
+     } else {
+       toast.error(message, { position: "bottom-left" });
+     }
+   } catch (err: any) {
+     toast.error(err?.message || "An error occurred", {
+       position: "bottom-left",
+     });
+   } finally {
+     setIsLoading(false);
+   }
+ };
+
 
   return (
     <Form {...form}>
