@@ -52,3 +52,19 @@ export const DomainOption = [
   "IT",
   "Finance"
 ];
+
+
+
+
+
+export type TProduct = {
+  _id:string;
+  name: string;
+  category: string;
+  price: number;
+  description: string;
+  image: string;
+  quantity: number;
+  discount?: number;
+  isDeleted?: boolean;
+};

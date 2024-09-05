@@ -11,7 +11,7 @@ const createProductIntoDB = async (payload: TProduct) => {
 
 const getAllProductsFromDB = async (query: Record<string, unknown>) => {
   const productQuery = new QueryBuilder(
-    Product.find({ isDeleted: false }),
+    Product.find(),
     query,
   )
     .search(productSearchableFields)
