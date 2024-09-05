@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { UserPlus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useAppSelector } from "@/redux/hokks";
+
 import AddUserButton from "./AddUserButton/AddUserButton";
 
 const Header = () => {

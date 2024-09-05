@@ -8,7 +8,7 @@ const Login = () => {
       <div className="flex-1 flex items-center justify-center  bg-white">
         <div className="w-full max-w-md">
           <h1 className="text-2xl font-bold">Welcome Back!</h1>
-          <p className="text-foreground">
+          <p className="text-gray-400">
             Enter your credentials to access your account
           </p>
           <LoginForm />
