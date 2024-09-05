@@ -1,16 +1,17 @@
 import assets from "@/assets";
+import LoginForm from "@/form/LoginForm";
 
 const Login = () => {
   return (
     <div className="flex w-full h-screen">
       {/* Form Section */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-white">
+      <div className="flex-1 flex items-center justify-center  bg-white">
         <div className="w-full max-w-md">
-          {/* Replace 'form' with your actual form elements */}
-          <form>
-            <h1 className="text-2xl font-bold mb-6">Login</h1>
-            {/* Input fields, buttons, etc. */}
-          </form>
+          <h1 className="text-2xl font-bold">Welcome Back!</h1>
+          <p className="text-foreground">
+            Enter your credentials to access your account
+          </p>
+          <LoginForm />
         </div>
       </div>
 

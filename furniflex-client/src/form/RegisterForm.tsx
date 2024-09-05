@@ -28,7 +28,9 @@ import {
 } from "@/components/ui/select";
 import { DomainOption, GenderOption } from "@/types/global.type";
 import { useNavigate } from "react-router-dom";
-import { useCreateUserMutation } from "@/redux/features/user/userApi";
+import { useState } from "react";
+const [isLoading, setIsLoading] = useState(false);
+
 const formSchema = z.object({
   email: z.string().email({
     message: "Please enter valid email",
@@ -43,9 +45,9 @@ const formSchema = z.object({
   gender: z.string().min(1, { message: "Category must be selected" }),
 });
 
-const AddUserForm = () => {
+const RegisterForm = () => {
   const navigate = useNavigate();
-  const [createUser, { isLoading }] = useCreateUserMutation();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,23 +61,21 @@ const AddUserForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    if (values.avatar && values.avatar.length > 0) {
-      const url = await uploadImage(values.avatar[0]);
-      values.avatar = url;
-    } else {
-      values.avatar = "";
-    }
-
-    try {
-      const res = await createUser(values).unwrap();
-
-      if (res?.data) {
-        toast.success("user added successfully",{position:'bottom-left'});
-        navigate("/");
-      }
-    } catch (err: any) {
-      toast.error(err?.message, { position: "bottom-left" });
-    }
+    // if (values.avatar && values.avatar.length > 0) {
+    //   const url = await uploadImage(values.avatar[0]);
+    //   values.avatar = url;
+    // } else {
+    //   values.avatar = "";
+    // }
+    // try {
+    //   // const res = await createUser(values).unwrap();
+    //   if (res?.data) {
+    //     toast.success("user added successfully",{position:'bottom-left'});
+    //     navigate("/");
+    //   }
+    // } catch (err: any) {
+    //   toast.error(err?.message, { position: "bottom-left" });
+    // }
   };
   return (
     <Form {...form}>
@@ -172,7 +172,6 @@ const AddUserForm = () => {
                 </FormItem>
               )}
             />
-     
 
             <FormField
               control={form.control}
@@ -180,7 +179,7 @@ const AddUserForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>avatar</FormLabel>
-                  <FormControl >
+                  <FormControl>
                     <Input
                       type="file"
                       accept="image/*"
@@ -206,4 +205,4 @@ const AddUserForm = () => {
   );
 };
 
-export default AddUserForm;
+export default RegisterForm;
