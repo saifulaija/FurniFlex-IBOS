@@ -1,4 +1,5 @@
-import HomeLayout from "@/components/layout/HomeLayout";
+
+import { HomeLayout } from "@/components/layout/HomeLayout";
 import NotFound from "@/components/shared/NotFound/NotFound";
 import UserDetails from "@/components/user/DetailsUser";
 import AddUser from "@/page/AddUser/AddUser";
