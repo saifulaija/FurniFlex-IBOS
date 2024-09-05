@@ -7,7 +7,11 @@ import { TUser, UserModel } from './user.interface';
 
 const userSchema = new Schema<TUser>(
   {
-    name: {
+    firstName: {
+      type: String,
+     
+    },
+    lastName: {
       type: String,
      
     },
@@ -19,6 +23,10 @@ const userSchema = new Schema<TUser>(
     password: {
       type: String,
       required: true,
+    },
+    profilePhoto: {
+      type: String,
+      
     },
 
     role: {

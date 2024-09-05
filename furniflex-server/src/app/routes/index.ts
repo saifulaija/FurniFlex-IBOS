@@ -10,7 +10,7 @@ const router = Router();
 
 const moduleRoutes = [
   {
-    path: '/users',
+    path: '/user',
     route: UserRoutes,
   },
 
@@ -20,7 +20,7 @@ const moduleRoutes = [
   },
 
   {
-    path: '/products',
+    path: '/product',
     route: ProductsRoutes,
   },
 
