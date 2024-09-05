@@ -106,31 +106,6 @@ const getAllProductsByCategoryFromDB = async (category: string) => {
   return { meta, result };
 };
 
-const updateProductIntoDB = async (id: string, payload: Partial<TProduct>) => {
-  const { sizeStok, ...remainingProductData } = payload;
-
-  const modifiedUpdatedData: Record<string, unknown> = {
-    ...remainingProductData,
-  };
-
-  if (sizeStok && Array.isArray(sizeStok) && sizeStok.length > 0) {
-    const sizeStockObject: Record<string, unknown> = {};
-
-    sizeStok.forEach((item, index) => {
-      sizeStockObject[`sizeStok.${index}.size`] = item.size;
-      sizeStockObject[`sizeStok.${index}.stock`] = item.stock;
-    });
-
-    modifiedUpdatedData['$set'] = sizeStockObject;
-  }
-
-  const result = await Product.findByIdAndUpdate(id, modifiedUpdatedData, {
-    new: true,
-    runValidators: true,
-  });
-
-  return result;
-};
 
 const deleteProductIntoDB = async (id: string) => {
   const result = await Product.findOneAndUpdate(
@@ -144,7 +119,7 @@ const deleteProductIntoDB = async (id: string) => {
 export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
-  updateProductIntoDB,
+
   getSingleProductFromDB,
   getAllProductsByCategoryFromDB,
   deleteProductIntoDB,

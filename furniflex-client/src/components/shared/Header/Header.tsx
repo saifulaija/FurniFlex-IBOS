@@ -19,7 +19,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const user = useAppSelector((state) => state.user);
+
 
   const searchRef = useRef<HTMLInputElement | null>(null);
 
@@ -189,7 +189,8 @@ const handleClearSearch = () => {
                   "absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2"
                 )}
               >
-                {user.cartItems.length ? user?.cartItems.length : 0}
+                {/* {user.cartItems.length ? user?.cartItems.length : 0} */}
+                0
               </Badge>
             </Link>
 

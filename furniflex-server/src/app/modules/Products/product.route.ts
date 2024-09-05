@@ -14,19 +14,7 @@ router.post(
   ProductControllers.createProduct,
 );
 
-
-router.patch(
-  '/delete-product/:id', ProductControllers.deleteProduct
- 
-);
-router.patch(
-  '/update-product/:id', ProductControllers.updateProduct
- 
-);
-
-
-
-
+router.patch('/delete-product/:id', ProductControllers.deleteProduct);
 
 router.get(
   '/get-single-product/:id',
@@ -34,21 +22,16 @@ router.get(
   ProductControllers.getSingleProduct,
 );
 
-
-
 router.get(
   '/',
 
-  ProductControllers.getAllProdycts,
+  ProductControllers.getAllProducts,
 );
-
-
 
 router.get(
   '/category/:category',
 
   ProductControllers.getAllProductsByCategory,
 );
-
 
 export const ProductsRoutes = router;
