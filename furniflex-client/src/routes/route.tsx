@@ -1,4 +1,5 @@
 
+import AuthLayout from "@/components/layout/AuthLayout";
 import { HomeLayout } from "@/components/layout/HomeLayout";
 import NotFound from "@/components/shared/NotFound/NotFound";
 import UserDetails from "@/components/user/DetailsUser";
@@ -6,6 +7,8 @@ import AddUser from "@/page/AddUser/AddUser";
 import AllUser from "@/page/AllUser/AllUser";
 
 import Home from "@/page/Home/Home";
+import Login from "@/page/Login/Login";
+import Register from "@/page/Register/Register";
 import ShowTeam from "@/page/ShowTeam/ShowTeam";
 import TeamCart from "@/page/TeamCart/TeamCart";
 import UpdateUser from "@/page/UpdateUser/UpdateUser";
@@ -52,6 +55,21 @@ const router = createBrowserRouter([
         element: <UpdateUser />,
         loader: ({ params }) =>
           fetch(` http://localhost:5000/api/users/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+
+      {
+        path: "register",
+        element: <Register/>,
       },
     ],
   },

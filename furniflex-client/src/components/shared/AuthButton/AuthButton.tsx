@@ -17,7 +17,7 @@ const AuthButton = () => {
           </span>
         </Button>
       ) : (
-        <Link to="/login" className="flex items-center gap-2">
+        <Link to="/auth/login" className="flex items-center gap-2">
           <img src={assets.images.user} width={40} height={40} alt="" />
           <ChevronDown className="" />
         </Link>
