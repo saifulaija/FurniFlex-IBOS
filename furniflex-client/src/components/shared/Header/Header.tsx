@@ -6,18 +6,16 @@ import assets from "@/assets";
 import { motion } from "framer-motion";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { ShoppingBagIcon, UserPlus } from "lucide-react";
+
+import { ShoppingBagIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-import AddUserButton from "./AddUserButton/AddUserButton";
 import { useAppSelector } from "@/redux/hooks";
 import AuthButton from "../AuthButton/AuthButton";
 
 const Header = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
   const cart = useAppSelector((state) => state.cart);
 
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -39,19 +37,7 @@ const Header = () => {
     [navigate]
   );
 
-  const handleInputChange = (e: any) => {
-    setSearchValue(e.target.value);
-    handleSearch(e.target.value);
-  };
-
-  const handleClearSearch = () => {
-    setSearchValue("");
-    if (searchRef.current) {
-      searchRef.current.focus(); // Focus back to the search input
-    }
-    navigate("/"); // Navigate back to the default page
-  };
-
+  
   const menuItems = [
     { label: "Home", path: "/", show: true },
     { label: "Products", path: "/all-users", show: true },
