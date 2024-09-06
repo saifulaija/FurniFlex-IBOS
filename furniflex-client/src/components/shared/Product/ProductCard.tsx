@@ -1,5 +1,3 @@
-
-
 // import { Card } from "@/components/ui/card";
 // import { cn } from "@/lib/utils";
 // import { truncateTitle } from "@/utils/truncateTitle";
@@ -91,7 +89,6 @@
 
 // export default ProductCard;
 
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -116,9 +113,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
 
   const handleAddToCart = async (productId: string) => {
     setLoading(true);
-    console.log(`Adding product ${productId} to cart...`);
 
-    // Simulate delay for adding to cart
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const productToAdd = {
@@ -204,5 +199,3 @@ const ProductCard = ({ product }: { product: TProduct }) => {
 };
 
 export default ProductCard;
-
-
