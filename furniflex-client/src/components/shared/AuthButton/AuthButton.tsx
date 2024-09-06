@@ -4,7 +4,7 @@ import { ChevronDown, LogOut, Mails } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
 import assets from "@/assets";
-import { useAuth } from "@/components/AuthContext/AuthContext";
+
 import {
   DropdownMenu,
   
@@ -14,14 +14,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MyAvatar } from "@/components/shadcn/MyAvatar";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, selectCurrentUser } from "@/redux/feature/auth/authSlice";
 
 const AuthButton = () => {
   const navigate = useNavigate();
-   const { user,logout } = useAuth();
-    const handleLogout = () => {
-      logout();
-      navigate("/"); 
-    };
+   const dispatch=useAppDispatch()
+   const user=useAppSelector(selectCurrentUser)
+   const handleLogout = () => {
+     dispatch(logout());
+    
+   };
 
 
 
@@ -31,7 +34,7 @@ const AuthButton = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">
-              <MyAvatar url={user?.profilePhoto} alt={user?.name} />
+              <MyAvatar url={user?.profilePhoto} alt='user' />
               <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>

@@ -16,11 +16,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PasswordInput } from "@/components/shared/PasswordInput/PasswordInput";
 import { Checkbox } from "@/components/ui/checkbox";
-import axiosInstance from "@/utils/axiosInstance";
+
+import { useLoginMutation } from "@/redux/feature/auth/authApi";
+import { useAppDispatch } from "@/redux/hooks";
+import { verifyToken } from "@/utils/verifyToken";
+import { TUser } from "@/types/global.type";
+import { setUser } from "@/redux/feature/auth/authSlice";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -32,8 +37,15 @@ const formSchema = z.object({
 });
 
 const LoginForm = () => {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+   const [loading, setLoading] = useState(false);
+
+
+   const [login, { isLoading }] = useLoginMutation();
+   const navigate = useNavigate();
+   const location = useLocation();
+   const from = location.state?.from.pathname || "/";
+
+   const dispatch = useAppDispatch();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,28 +58,25 @@ const LoginForm = () => {
 
 
  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-   setIsLoading(true);
+ 
    try {
-     const response = await axiosInstance.post(
-       "/auth/login",
-       values
-     );
-     const { success, message, data } = response.data;
+     
+    //  login(userInfo);
 
-     if (success) {
-       toast.success(message, { position: "bottom-left" });
-       // Store the access token (for example, in localStorage)
-       localStorage.setItem("accessToken", data.accessToken);
-       navigate("/");
+     const res = await login(values).unwrap();
+     console.log(res);
+
+     const user = verifyToken(res.data.accessToken) as TUser;
+     dispatch(setUser({ user: user, token: res.data.accessToken }));
+     toast.success("Logged In successfully", { position: "bottom-left" });
+  
+     if (user.role === "user") {
+       navigate(from, { replace: true });
      } else {
-       toast.error(message, { position: "bottom-left" });
+       navigate("/");
      }
-   } catch (err: any) {
-     toast.error(err?.message || "An error occurred", {
-       position: "bottom-left",
-     });
-   } finally {
-     setIsLoading(false);
+   } catch (error) {
+     toast.error((error as any)?.data?.message || "An error occurred",{position:'bottom-left'});
    }
  };
 

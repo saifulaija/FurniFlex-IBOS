@@ -6,8 +6,7 @@ export type TUser = {
   email: string;
   profilePhoto: string;
   role: string;
-  iat: number;
-  exp: number;
+ 
 };
 
 // Define the authentication state type

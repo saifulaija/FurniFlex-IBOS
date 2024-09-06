@@ -34,8 +34,9 @@ export type TQueryParam = {
 };
 
 export type TUser = {
-  userName: string;
+ 
   email: string;
+  profilePhoto:string;
   password: string;
   isDeleted: boolean;
   role: string;
