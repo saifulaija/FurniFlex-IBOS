@@ -30,6 +30,7 @@ const Product = () => {
     // Implement the add to cart logic
     console.log(`Add product ${productId} to cart`);
   };
+console.log(products);
 
   if (isLoading) <Loader />;
 

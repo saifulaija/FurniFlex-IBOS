@@ -68,3 +68,17 @@ export type TProduct = {
   discount?: number;
   isDeleted?: boolean;
 };
+
+// Define the type for a product
+export type CartItem = {
+  isDeleted: boolean;
+  _id: string;
+  name: string;
+  category: string;
+  price: number;
+  description: string;
+  image: string;
+  discount: number;
+  quantity: number;
+};
+
