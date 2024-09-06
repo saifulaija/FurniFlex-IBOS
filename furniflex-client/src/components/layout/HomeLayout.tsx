@@ -33,6 +33,10 @@ import {
 } from "react-router-dom";
 import AuthButton from "../shared/AuthButton/AuthButton";
 import assets from "@/assets";
+import { useAppSelector } from "@/redux/hooks";
+import { selectCurrentUser } from "@/redux/feature/auth/authSlice";
+import { Badge } from "../ui/badge";
+import AddUserButton from "../shared/Header/AddUserButton/AddUserButton";
 
 interface SideMenuItem {
   title: string;
@@ -42,9 +46,10 @@ interface SideMenuItem {
 }
 
 export function HomeLayout() {
-  const user = null;
+const user=useAppSelector(selectCurrentUser)
   const location = useLocation(); // Get the location object
   const pathname = location.pathname; // Extract the pathname
+  const cart=useAppSelector((state)=>state.cart)
 
 
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -111,7 +116,7 @@ export function HomeLayout() {
       {/* Sidebar for larger devices */}
       <div className="hidden border-r md:block">
         <div className="flex h-full max-h-screen flex-col gap-2 fixed w-[280px]">
-          <div className="flex h-14 items-center border-b py-4 px-4 lg:h-[60px] lg:px-6">
+          <div className="flex h-20 items-center border-b py-4 px-4 lg:h-[80px] lg:px-6">
             <motion.div
               className="hidden md:flex"
               animate={{ x: xOffset }} // Apply xOffset based on scroll
@@ -167,7 +172,7 @@ export function HomeLayout() {
       <div className="flex flex-col">
         <header
           className={cn(
-            "flex justify-between h-14 items-center bg-white fixed top-0 left-0 md:left-[280px] right-0 z-50 gap-4 border-b px-4 lg:h-[60px] lg:px-6",
+            "flex justify-between h-20 items-center bg-white fixed top-0 left-0 md:left-[280px] right-0 z-50 gap-4 border-b px-4 lg:h-[80px] lg:px-6",
             scrolled ? "bg-opacity-100 border-b" : ""
           )}
         >
@@ -219,8 +224,8 @@ export function HomeLayout() {
               <img
                 src={assets.images.logo}
                 alt="logo"
-                width={60}
-                height={60}
+                width={100}
+                height={100}
                 className="rounded"
               />
             </Link>
@@ -246,17 +251,37 @@ export function HomeLayout() {
                 )
             )}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-8">
             <Button
-              asChild
               variant="outline"
-              className="hover:bg-primary text-gray-400 hover:text-white px-2 py-1 hover:transition-all hover:duration-200"
+              className={cn(
+                "hover:bg-primary hover:text-white text-gray-400 px-1 py-2 transition-colors duration-300 ease-in-out rounded-md"
+              )}
             >
-              <Link to="/signin" className="flex items-center font-semibold">
-                <ShoppingBagIcon className="h-5 w-5" />
-                <span className="sr-only">View shopping cart</span>
+              <Link to="/cart" className="flex items-center gap-1 relative">
+                {cart?.cartTotalAmount > 0 ? (
+                  <span className="font-semibold  text-[16px]">
+                    {cart?.cartTotalAmount}
+                    <span className="font-serif font-semibold "> ৳</span>
+                  </span>
+                ) : (
+                  <span className="font-semibold text-[16px] font-serif">
+                    0 ৳
+                  </span>
+                )}
+                <ShoppingBagIcon className="w-5 h-5" />
+                {cart.cartItems.length > 0 && (
+                  <Badge
+                    className={cn(
+                      "absolute -top-6 -right-4 text-white text-xs"
+                    )}
+                  >
+                    {cart.cartItems.length}
+                  </Badge>
+                )}
               </Link>
             </Button>
+
             <AuthButton />
           </div>
         </header>

@@ -1,6 +1,8 @@
 import AuthLayout from "@/components/layout/AuthLayout";
+import CartLayout from "@/components/layout/CartLayout";
 import { HomeLayout } from "@/components/layout/HomeLayout";
 import NotFound from "@/components/shared/NotFound/NotFound";
+import Cart from "@/page/Cart/Cart";
 
 import Home from "@/page/Home/Home";
 import Login from "@/page/Login/Login";
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "/auth",
     element: <AuthLayout />,
@@ -32,6 +35,18 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+    ],
+  },
+
+  {
+    path: "/cart",
+    element: <CartLayout />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
