@@ -1,5 +1,4 @@
 import { BaseQueryApi } from "@reduxjs/toolkit/query";
-
 export type TError = {
   data: {
     message: string;
@@ -16,22 +15,21 @@ export type TMeta = {
   totalPage: number;
 };
 
-
 export type TResponse<T> = {
-  data?: {
-    result: T; // The type of the actual data, e.g., TUser[] for an array of users
-    meta?: TMeta; // Ensure meta is defined here
-  };
+  data?: T;
   error?: TError;
+  meta?: TMeta;
   success: boolean;
   message: string;
 };
+
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 
 export type TQueryParam = {
   name: string;
   value: boolean | React.Key;
 };
+
 
 export type TUser = {
  
