@@ -1,5 +1,6 @@
 import AuthLayout from "@/components/layout/AuthLayout";
 import CartLayout from "@/components/layout/CartLayout";
+
 import { HomeLayout } from "@/components/layout/HomeLayout";
 import NotFound from "@/components/shared/NotFound/NotFound";
 import Cart from "@/page/Cart/Cart";
