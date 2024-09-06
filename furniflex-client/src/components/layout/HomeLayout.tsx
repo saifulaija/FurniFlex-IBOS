@@ -1,11 +1,4 @@
-
-
-import {
-  ChevronRight,
-  SearchCheck,
-  ShoppingCart as CartIcon, // Alias to avoid conflict
-  ShoppingBagIcon,
-} from "lucide-react";
+import { SearchCheck, ShoppingBagIcon, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -65,6 +58,12 @@ export function HomeLayout() {
     {
       title: "Executive Chair",
       path: "/product/category/Executive-Chair",
+
+      show: true,
+    },
+    {
+      title: "Presentation Chair",
+      path: "/product/category/Presentation-Chair",
 
       show: true,
     },
@@ -133,7 +132,7 @@ export function HomeLayout() {
                   </Link>
                 </div>
               </motion.div>
-  
+
               <Button variant="link" size="icon" className="ml-auto h-8 w-8">
                 <span className="sr-only">Toggle notifications</span>
               </Button>
@@ -144,7 +143,7 @@ export function HomeLayout() {
                   Find by Category
                 </div>
                 <Separator />
-  
+
                 {items.map((item) => (
                   <div
                     key={item.path}
@@ -166,7 +165,7 @@ export function HomeLayout() {
             </div>
           </div>
         </div>
-  
+
         <div className="flex flex-col">
           <header
             className={cn(
@@ -195,7 +194,7 @@ export function HomeLayout() {
                     Find by Category
                   </div>
                   <Separator />
-  
+
                   {items.map((item) => (
                     <div
                       key={item.path}
@@ -216,7 +215,7 @@ export function HomeLayout() {
                 </nav>
               </SheetContent>
             </Sheet>
-  
+
             <div className="items-center flex md:hidden">
               <Link to="/">
                 <img
@@ -253,7 +252,7 @@ export function HomeLayout() {
               <Button
                 variant="outline"
                 className={cn(
-                  "hover:bg-primary hover:text-white text-gray-400 px-1 py-2 transition-colors duration-300 ease-in-out rounded-md"
+                  "hover:bg-primary hover:text-white  text-gray-400 px-1 py-2 transition-colors duration-300 ease-in-out rounded-lg"
                 )}
               >
                 <Link to="/cart" className="flex items-center gap-1 relative">
@@ -267,7 +266,7 @@ export function HomeLayout() {
                       0 ৳
                     </span>
                   )}
-                  <ShoppingBagIcon className="w-5 h-5" />
+                  <ShoppingCart className="w-5 h-5" />
                   {cart.cartItems.length > 0 && (
                     <Badge
                       className={cn(
@@ -279,7 +278,7 @@ export function HomeLayout() {
                   )}
                 </Link>
               </Button>
-  
+
               <AuthButton />
             </div>
           </header>
@@ -288,8 +287,7 @@ export function HomeLayout() {
           </main>
         </div>
       </div>
-        <Footer/>
+      <Footer />
     </>
   );
 }
-

@@ -121,10 +121,10 @@ const ShoppingCart = () => {
                           </div>
                         </TableCell>
                         <TableCell className="text-right">
-                          {formatMoney(Number(finalPrice.toFixed(2)))}
+                          {formatMoney(Number(finalPrice.toFixed(0)))}
                         </TableCell>
                         <TableCell className="text-right text-red-500">
-                          {formatMoney(Number(savedAmount.toFixed(2)))}
+                          {formatMoney(Number(savedAmount.toFixed(0)))}
                         </TableCell>
                         <TableCell className="text-right">
                           <Button
@@ -153,7 +153,7 @@ const ShoppingCart = () => {
               <div className="flex justify-between items-center mb-2">
                 <p className="text-gray-400">Subtotal</p>
                 <p className="text-gray-400">
-                  {formatMoney(Number(totalAmount.toFixed(2)))}
+                  {formatMoney(Number(totalAmount.toFixed(0)))}
                 </p>
               </div>
               <div className="flex justify-between items-center mb-2">
@@ -168,7 +168,7 @@ const ShoppingCart = () => {
               <div className="flex justify-between items-center mb-2">
                 <p className="text-gray-600 font-semibold">Total</p>
                 <p className="text-lg font-semibold">
-                  {formatMoney(Number(totalAmount.toFixed(2)))}
+                  {formatMoney(Number(totalAmount.toFixed(0)))}
                 </p>
               </div>
               <div className="flex space-x-4 mt-4">
