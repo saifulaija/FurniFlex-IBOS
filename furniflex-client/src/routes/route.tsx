@@ -6,6 +6,7 @@ import Cart from "@/page/Cart/Cart";
 
 import Home from "@/page/Home/Home";
 import Login from "@/page/Login/Login";
+import ProductCategory from "@/page/ProductCategory/ProductCategory";
 import Register from "@/page/Register/Register";
 
 import { createBrowserRouter } from "react-router-dom";
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "product/category/:category",
+        element: <ProductCategory />,
       },
     ],
   },

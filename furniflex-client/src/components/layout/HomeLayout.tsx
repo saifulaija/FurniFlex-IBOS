@@ -1,23 +1,16 @@
+
+
 import {
   ChevronRight,
   SearchCheck,
-  LucideHome,
-  BookMarkedIcon,
-  Tag,
-  Book,
-  ShoppingCart,
-  LucideIcon,
   ShoppingCart as CartIcon, // Alias to avoid conflict
-  Archive, // Example of another icon
-  Camera,
-  Film,
   ShoppingBagIcon,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -34,23 +27,21 @@ import {
 import AuthButton from "../shared/AuthButton/AuthButton";
 import assets from "@/assets";
 import { useAppSelector } from "@/redux/hooks";
-import { selectCurrentUser } from "@/redux/feature/auth/authSlice";
+
 import { Badge } from "../ui/badge";
-import AddUserButton from "../shared/Header/AddUserButton/AddUserButton";
 
 interface SideMenuItem {
   title: string;
   path: string;
-  image: LucideIcon; // Update the image type to use LucideIcon
+
   show?: boolean; // Optional property to control visibility
 }
 
 export function HomeLayout() {
-const user=useAppSelector(selectCurrentUser)
+  const navigate = useNavigate();
   const location = useLocation(); // Get the location object
   const pathname = location.pathname; // Extract the pathname
-  const cart=useAppSelector((state)=>state.cart)
-
+  const cart = useAppSelector((state) => state.cart);
 
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [xOffset, setXOffset] = useState<number>(0);
@@ -65,36 +56,42 @@ const user=useAppSelector(selectCurrentUser)
 
   const items: SideMenuItem[] = [
     {
-      title: "Electronics",
-      path: "/blogs/category/Electronics",
-      image: Camera,
+      title: "Rocking Chair",
+      path: "/product/category/Rocking-Chair",
+
       show: true,
     },
     {
-      title: "Books",
-      path: "/blogs/category/Books",
-      image: Book,
+      title: "Executive Chair",
+      path: "/product/category/Executive-Chair",
+
       show: true,
     },
     {
-      title: "Groceries",
-      path: "/blogs/category/Groceries",
-      image: CartIcon,
+      title: "Task Chair",
+      path: "/product/category/Task-Chair",
+
       show: true,
     },
     {
-      title: "Movies",
-      path: "/blogs/category/Movies",
-      image: Film,
+      title: "Slide Chair",
+      path: "/product/category/Slide-Chair",
+
       show: true,
     },
     {
-      title: "Home & Kitchen",
-      path: "/blogs/category/Home-Kitchen",
-      image: Archive,
+      title: "Lounge Chair",
+      path: "/product/category/Lounge-Chair",
+
       show: true,
     },
   ];
+
+  const handleSubMenuClick = (item: SideMenuItem) => {
+    // Replace spaces with hyphens for cleaner URLs
+    const key = item.title.trim().replace(/\s+/g, "-"); // Replaces all spaces with hyphens
+    navigate(`/product/category/${key}`);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,21 +144,20 @@ const user=useAppSelector(selectCurrentUser)
               <Separator />
 
               {items.map((item) => (
-                <Link
+                <div
                   key={item.path}
-                  to={item.path}
                   className={cn(
-                    "flex items-center justify-between gap-3 px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                    pathname === item.path &&
-                      "text-primary bg-muted border-r-4 border-r-primary"
+                    "flex items-center justify-center px-5  py-2 text-muted-foreground transition-all ",
+                    pathname === item.path && "bg-primary  text-white"
                   )}
                 >
-                  <div className="flex items-center gap-3 capitalize">
-                    <item.image className="h-5 w-5" />
+                  <button
+                    onClick={() => handleSubMenuClick(item)}
+                    className="flex items-center gap-3 capitalize w-full text-center"
+                  >
                     {item.title}
-                  </div>
-                  <ChevronRight />
-                </Link>
+                  </button>
+                </div>
               ))}
             </nav>
             <Separator />
@@ -199,21 +195,21 @@ const user=useAppSelector(selectCurrentUser)
                 <Separator />
 
                 {items.map((item) => (
-                  <Link
+                  <div
                     key={item.path}
-                    to={item.path}
                     className={cn(
                       "flex items-center justify-between gap-3 px-3 py-2 text-muted-foreground transition-all hover:text-primary",
                       pathname === item.path &&
                         "text-primary bg-muted border-r-4 border-r-primary"
                     )}
                   >
-                    <div className="flex items-center gap-3 capitalize">
-                      <item.image className="h-5 w-5" />
+                    <button
+                      onClick={() => handleSubMenuClick(item)}
+                      className="flex items-center gap-3 capitalize w-full text-left"
+                    >
                       {item.title}
-                    </div>
-                    <ChevronRight />
-                  </Link>
+                    </button>
+                  </div>
                 ))}
               </nav>
             </SheetContent>
@@ -260,7 +256,7 @@ const user=useAppSelector(selectCurrentUser)
             >
               <Link to="/cart" className="flex items-center gap-1 relative">
                 {cart?.cartTotalAmount > 0 ? (
-                  <span className="font-semibold  text-[16px]">
+                  <span className="font-semibold text-[16px]">
                     {cart?.cartTotalAmount}
                     <span className="font-serif font-semibold "> ৳</span>
                   </span>

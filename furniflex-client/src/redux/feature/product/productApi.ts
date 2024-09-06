@@ -55,8 +55,15 @@ const productApi = baseApi.injectEndpoints({
     getAllProductsByCategory: builder.query({
       query: (category) => {
         return {
-          url: `/products/category/${category}`,
+          url: `/product/category/${category}`,
           method: "GET",
+        };
+      },
+      providesTags: ["product"],
+      transformResponse: (response: TResponseRedux<TProduct[]>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
         };
       },
     }),
