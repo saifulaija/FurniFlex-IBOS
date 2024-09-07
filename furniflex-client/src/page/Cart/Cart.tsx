@@ -22,8 +22,21 @@ import {
   removeFromCart,
 } from "@/redux/feature/product/cartSlice";
 import { formatMoney } from "@/utils/formatMoney";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { selectCurrentUser } from "@/redux/feature/auth/authSlice";
 
 const ShoppingCart = () => {
+  const user=useAppSelector(selectCurrentUser)
   const navigate = useNavigate();
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -43,6 +56,14 @@ const ShoppingCart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
+
+    const handleLogin = () => {
+      navigate("/auth/login");
+    };
+    const handleGotoCheckout = () => {
+      navigate(`/cart/checkout`);
+    };
 
   // Calculate total amount and total saved amount
   const totalAmount = cart.cartItems.reduce((sum, item) => {
@@ -140,7 +161,11 @@ const ShoppingCart = () => {
                 </TableBody>
               </Table>
               <div className="flex justify-end -mt-6">
-                <Button onClick={handleClearCart} variant="link" className={cn('text-red-500')}>
+                <Button
+                  onClick={handleClearCart}
+                  variant="link"
+                  className={cn("text-red-500")}
+                >
                   Clear Cart
                 </Button>
               </div>
@@ -172,9 +197,36 @@ const ShoppingCart = () => {
                 </p>
               </div>
               <div className="flex space-x-4 mt-4">
-                <Button className={cn("w-full uppercase")}>
-                  G0 to Checkout
-                </Button>
+                {user ? (
+                  <Button className={cn("w-full uppercase")} onClick={handleGotoCheckout}>
+                    G0 to Checkout
+                  </Button>
+                ) : (
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button className={cn("w-full uppercase")}>
+                        G0 to Checkout
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Are you want to place order?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          You need to login at first. Would you like to go to
+                          the login page?
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleLogin}>
+                          Continue
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                )}
               </div>
             </div>
           </div>

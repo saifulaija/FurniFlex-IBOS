@@ -259,7 +259,7 @@ const Checkout = () => {
 
   return (
     <div className="w-full py-10 px-4 md:p-10">
-      <Card className="max-w-5xl mx-auto p-6 md:p-10 flex flex-col">
+      <Card className="max-w-5xl mx-auto p-6 md:p-15 flex flex-col">
         {cart.cartItems.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-gray-500 text-lg">
@@ -270,8 +270,8 @@ const Checkout = () => {
           <div className="flex flex-col gap-10">
             {/* Table Section */}
             <div className="w-full overflow-auto">
-              <h1 className="font-semibold text-2xl mb-4 text-center">
-                An overview of your order
+              <h1 className="font-semibold text-2xl mb-2 text-center">
+                An overview of your orders
               </h1>
               <Separator className="mb-4" />
               <Table>
@@ -341,7 +341,7 @@ const Checkout = () => {
                   })}
                 </TableBody>
               </Table>
-              <div className="flex justify-end mt-4">
+              <div className="flex justify-end">
                 <Button
                   onClick={handleClearCart}
                   variant="link"
