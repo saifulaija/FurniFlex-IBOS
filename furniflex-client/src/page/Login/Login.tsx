@@ -1,5 +1,8 @@
 import assets from "@/assets";
+import Credential from "@/components/Credential/Credential";
+import MyDialog from "@/components/shadcn/MyDialog";
 import LoginForm from "@/form/LoginForm";
+import { ChevronRight } from "lucide-react";
 
 const Login = () => {
   return (
@@ -11,6 +14,16 @@ const Login = () => {
           <p className="text-gray-400">
             Enter your credentials to access your account
           </p>
+          <MyDialog
+            triggerButton={
+              <div className="hover:underline text-primary flex items-center">
+                <span>Credentials</span>
+                <ChevronRight />
+              </div>
+            }
+          >
+            <Credential />
+          </MyDialog>
           <LoginForm />
         </div>
       </div>

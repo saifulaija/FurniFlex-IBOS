@@ -9,6 +9,7 @@ import Blog from "@/page/Blog/Blog";
 import Cart from "@/page/Cart/Cart";
 import CategoriesPage from "@/page/Categories/CategoriesPage";
 import Checkout from "@/page/Checkout/Checkout";
+import ForgetPassword from "@/page/ForgetPassword/ForgetPassword";
 
 import Home from "@/page/Home/Home";
 import Login from "@/page/Login/Login";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "forgot-password",
+        element: <ForgetPassword />,
       },
     ],
   },

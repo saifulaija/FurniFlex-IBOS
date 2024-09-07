@@ -47,7 +47,7 @@ const Footer = () => {
               {resources.map((resource) => (
                 <li key={resource.title}>
                   <a
-                    href={resource.link}
+                    href='/'
                     className="hover:underline"
                     aria-label={resource.title}
                   >
@@ -65,7 +65,7 @@ const Footer = () => {
               {community.map((item) => (
                 <li key={item.title}>
                   <a
-                    href={item.link}
+                    href='/'
                     className="hover:underline"
                     aria-label={item.title}
                   >
@@ -83,7 +83,7 @@ const Footer = () => {
               {company.map((item) => (
                 <li key={item.title}>
                   <a
-                    href={item.link}
+                    href='/'
                     className="hover:underline"
                     aria-label={item.title}
                   >
