@@ -1,8 +1,10 @@
 
-import { TCategory } from "@/types/global.type";
 
-export const App_Name='FurniFlex'
-  export const categories: TCategory[] = [
+import { TCategory } from "@/types/global.type";
+import Categories from "./Categories";
+
+const CategoriesPage = () => {
+  const categories: TCategory[] = [
     {
       title: "Rocking Chair",
       path: "/product/category/Rocking-Chair",
@@ -34,3 +36,12 @@ export const App_Name='FurniFlex'
       show: true,
     },
   ];
+
+  return (
+    <div>
+      <Categories categories={categories} />
+    </div>
+  );
+};
+
+export default CategoriesPage;

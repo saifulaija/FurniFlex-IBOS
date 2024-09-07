@@ -9,7 +9,7 @@ import { Loader2, ShoppingCart } from "lucide-react";
 import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/feature/product/cartSlice";
 
-const ProductCard = ({ product }: { product: TProduct }) => {
+const AllProductsCard = ({ product }: { product: TProduct }) => {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const shortTitle = truncateTitle(product?.name ?? "", 30);
@@ -107,4 +107,4 @@ const ProductCard = ({ product }: { product: TProduct }) => {
   );
 };
 
-export default ProductCard;
+export default AllProductsCard;

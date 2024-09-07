@@ -35,10 +35,10 @@ const Header = () => {
   
   const menuItems = [
     { label: "Home", path: "/", show: true },
-    { label: "Products", path: "/all-users", show: true },
-    { label: "Categories", path: "/all-users", show: true },
-    { label: "Custom", path: "/all-users", show: true },
-    { label: "Blog", path: "/all-users", show: true },
+    { label: "Products", path: "/product", show: true },
+    { label: "Categories", path: "/product-categories", show: true },
+    { label: "Custom", path: "/product/custom", show: true },
+    { label: "Blog", path: "/blog", show: true },
   ];
 
   return (

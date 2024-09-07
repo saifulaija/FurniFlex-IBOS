@@ -1,4 +1,8 @@
+
+
 import { BaseQueryApi } from "@reduxjs/toolkit/query";
+import { LucideProps } from "lucide-react";
+
 export type TError = {
   data: {
     message: string;
@@ -30,34 +34,16 @@ export type TQueryParam = {
   value: boolean | React.Key;
 };
 
-
 export type TUser = {
- 
   email: string;
-  profilePhoto:string;
+  profilePhoto: string;
   password: string;
   isDeleted: boolean;
   role: string;
 };
 
-
-export const GenderOption = ["Male", "Female"];
-export const DomainOption = [
-  "Sales",
-  "Marketing",
-  "UI Designing",
-  "Business Development",
-  "Management",
-  "IT",
-  "Finance"
-];
-
-
-
-
-
 export type TProduct = {
-  _id:string;
+  _id: string;
   name: string;
   category: string;
   price: number;
@@ -68,7 +54,6 @@ export type TProduct = {
   isDeleted?: boolean;
 };
 
-// Define the type for a product
 export type CartItem = {
   isDeleted: boolean;
   _id: string;
@@ -80,4 +65,23 @@ export type CartItem = {
   discount: number;
   quantity: number;
 };
+
+export type TCategory = {
+  title: string;
+  path: string;
+  show?: boolean;
+};
+// types.ts
+
+
+
+// Define the type for the blog post
+export interface IBlogPost {
+  id: string;
+  title: string;
+  author: string;
+  date: string;
+  icon: any; // Corrected to use the LucideIcon type
+  content: string;
+}
 

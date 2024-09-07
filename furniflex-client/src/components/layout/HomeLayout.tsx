@@ -36,10 +36,9 @@ export function HomeLayout() {
 
   const menuItems = [
     { label: "Home", path: "/", show: true },
-    { label: "Products", path: "/all-users", show: true },
-    { label: "Categories", path: "/all-users", show: true },
-    { label: "Custom", path: "/all-users", show: true },
-    { label: "Blog", path: "/all-users", show: true },
+    { label: "Products", path: "/products", show: true },
+    { label: "Categories", path: "/categories", show: true },
+    { label: "Blog", path: "/blog", show: true },
   ];
 
   const items: SideMenuItem[] = [
