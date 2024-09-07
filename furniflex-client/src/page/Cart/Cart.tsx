@@ -72,11 +72,11 @@ const ShoppingCart = () => {
     return sum + finalPrice;
   }, 0);
 
-  const totalSaved = cart.cartItems.reduce((sum, item) => {
-    const discountAmount = (item.price * (item.discount || 0)) / 100;
-    const savedAmount = discountAmount * item.cartQuantity;
-    return sum + savedAmount;
-  }, 0);
+  // const totalSaved = cart.cartItems.reduce((sum, item) => {
+  //   const discountAmount = (item.price * (item.discount || 0)) / 100;
+  //   const savedAmount = discountAmount * item.cartQuantity;
+  //   return sum + savedAmount;
+  // }, 0);
 
   return (
     <div className="w-full py-10 px-4 md:p-10">

@@ -120,8 +120,12 @@ import { useGetAllProductsQuery } from "@/redux/feature/product/productApi";
 
 const ProductCategory = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
+  console.log(setParams);
+  
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(6); // Default limit of products per page
+  console.log(setLimit);
+  
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const location = useLocation();
@@ -149,12 +153,6 @@ const ProductCategory = () => {
       setPage(newPage);
       updateURLParams("page", newPage.toString());
     }
-  };
-
-  const handleLimitChange = (newLimit: number) => {
-    setLimit(newLimit);
-    updateURLParams("limit", newLimit.toString());
-    setPage(1); // Reset to the first page when limit changes
   };
 
   if (isLoading) return <Loader />;
@@ -207,24 +205,8 @@ const ProductCategory = () => {
           </PaginationContent>
         </Pagination>
       )}
-
-      {/* Limit Selection */}
-      {/* <div className="flex justify-center mt-4">
-        <select
-          value={limit}
-          onChange={(e) => handleLimitChange(Number(e.target.value))}
-          className="border border-gray-300 rounded-md p-2"
-        >
-          {[10, 20, 50].map((option) => (
-            <option key={option} value={option}>
-              Show {option}
-            </option>
-          ))}
-        </select>
-      </div> */}
     </div>
   );
 };
 
 export default ProductCategory;
-

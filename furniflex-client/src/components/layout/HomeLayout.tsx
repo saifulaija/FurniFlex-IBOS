@@ -32,6 +32,8 @@ export function HomeLayout() {
   const cart = useAppSelector((state) => state.cart);
 
   const [scrolled, setScrolled] = useState<boolean>(false);
+  console.log(setScrolled);
+  
   const [xOffset, setXOffset] = useState<number>(0);
 
   const menuItems = [

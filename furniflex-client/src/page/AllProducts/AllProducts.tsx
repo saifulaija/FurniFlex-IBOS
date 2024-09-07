@@ -9,6 +9,8 @@ import AllProductsCard from "./AllProductsCard";
 
 const AllProducts = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
+  console.log(setParams);
+  
   const { data: productsData, isLoading } = useGetAllProductsQuery([
     { name: "sort", value: "price" },
     ...params,

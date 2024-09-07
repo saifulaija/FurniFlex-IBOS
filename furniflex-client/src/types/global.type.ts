@@ -1,7 +1,4 @@
-
-
 import { BaseQueryApi } from "@reduxjs/toolkit/query";
-import { LucideProps } from "lucide-react";
 
 export type TError = {
   data: {
@@ -73,8 +70,6 @@ export type TCategory = {
 };
 // types.ts
 
-
-
 // Define the type for the blog post
 export interface IBlogPost {
   id: string;
@@ -84,4 +79,3 @@ export interface IBlogPost {
   icon: any; // Corrected to use the LucideIcon type
   content: string;
 }
-

@@ -2,12 +2,11 @@ import { Button } from "@/components/ui/button";
 
 import { ChevronDown, LogOut, Mails } from "lucide-react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import assets from "@/assets";
 
 import {
   DropdownMenu,
-  
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
@@ -18,15 +17,11 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout, selectCurrentUser } from "@/redux/feature/auth/authSlice";
 
 const AuthButton = () => {
-  const navigate = useNavigate();
-   const dispatch=useAppDispatch()
-   const user=useAppSelector(selectCurrentUser)
-   const handleLogout = () => {
-     dispatch(logout());
-    
-   };
-
-
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className="flex items-center gap-2">
@@ -34,7 +29,7 @@ const AuthButton = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary" size="icon" className="rounded-full">
-              <MyAvatar url={user?.profilePhoto} alt='user' />
+              <MyAvatar url={user?.profilePhoto} alt="user" />
               <span className="sr-only">Toggle user menu</span>
             </Button>
           </DropdownMenuTrigger>
@@ -43,7 +38,7 @@ const AuthButton = () => {
               <Mails />
               <p>{user?.email}</p>
             </DropdownMenuItem>
-            
+
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={handleLogout}

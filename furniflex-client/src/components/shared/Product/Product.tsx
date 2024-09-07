@@ -1,19 +1,17 @@
-
-
-import { TProduct, TQueryParam } from "@/types/global.type";
+import { TQueryParam } from "@/types/global.type";
 import Loader from "../Loader/Loader";
 import { useGetAllProductsQuery } from "@/redux/feature/product/productApi";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 
 const Product = () => {
-  
   const [params, setParams] = useState<TQueryParam[]>([]);
+  console.log(setParams);
+
   const { data: productsData, isLoading } = useGetAllProductsQuery([
     { name: "sort", value: "price" },
     ...params,
   ]);
-
 
   if (isLoading) <Loader />;
 

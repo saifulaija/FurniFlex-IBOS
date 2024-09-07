@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { TextAlignCenterIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { useState, useEffect } from "react";
+import { TextAlignCenterIcon} from "@radix-ui/react-icons";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import assets from "@/assets";
 import { motion } from "framer-motion";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 import { ShoppingBagIcon } from "lucide-react";
@@ -14,11 +14,9 @@ import { useAppSelector } from "@/redux/hooks";
 import AuthButton from "../AuthButton/AuthButton";
 
 const Header = () => {
-  const navigate = useNavigate();
+ 
   const [scrolled, setScrolled] = useState(false);
   const cart = useAppSelector((state) => state.cart);
-
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,9 +28,6 @@ const Header = () => {
     };
   }, []);
 
-
-
-  
   const menuItems = [
     { label: "Home", path: "/", show: true },
     { label: "Products", path: "/product", show: true },

@@ -1,6 +1,6 @@
 import assets from "@/assets";
 import { Separator } from "@/components/ui/separator";
-import { Facebook, Instagram } from "lucide-react";
+
 
 const Footer = () => {
   const resources = [
