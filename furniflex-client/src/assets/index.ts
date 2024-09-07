@@ -6,6 +6,8 @@ import logoText from "./images/logo-text.png";
 import user from "./images/user.png";
 import nodata from "./images/no-data.png";
 import footer_logo from "./images/footer-logo.png";
+import socialIcon from "./images/socialicon.png";
+import country from "./images/country.png";
 
 const assets = {
   images: {
@@ -14,7 +16,9 @@ const assets = {
     user,
     register,
     nodata,
-    footer_logo
+    footer_logo,
+    socialIcon,
+    country
   },
 };
 
