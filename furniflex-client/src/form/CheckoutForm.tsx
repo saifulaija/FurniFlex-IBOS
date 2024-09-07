@@ -79,10 +79,15 @@ const CheckoutForm = () => {
 
       // Make the API request to create the order
       const res = await createOrder(orderPayload).unwrap();
-      console.log(res);
 
-      toast.success("Order placed successfully", { position: "bottom-left" });
-      navigate("/cart/order-success");
+      if(res?.dat){
+
+        toast.success("Order placed successfully", { position: "bottom-left" });
+        navigate("/cart/order-success");
+        
+      }
+     
+      
     } catch (error) {
       toast.error((error as any)?.data?.message || "An error occurred", {
         position: "bottom-left",

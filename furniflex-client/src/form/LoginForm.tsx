@@ -50,11 +50,7 @@ const LoginForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      //  login(userInfo);
-
       const res = await login(values).unwrap();
-      console.log(res);
-
       const user = verifyToken(res.data.accessToken) as TUser;
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       toast.success("Logged In successfully", { position: "bottom-left" });

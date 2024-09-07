@@ -19,7 +19,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { uploadImage } from "@/utils/imgbb";
 import axiosInstance from "@/utils/axiosInstance";
 
-
 const formSchema = z.object({
   firstName: z.string().min(3, {
     message: "Enter your first name",
@@ -51,27 +50,6 @@ const RegisterForm = () => {
     },
   });
 
-  // const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  //   setIsLoading(true);
-  //   if (values.profilePhoto && values.profilePhoto.length > 0) {
-  //     const url = await uploadImage(values.profilePhoto[0]);
-  //     values.profilePhoto = url;
-  //   } else {
-  //     values.profilePhoto = "";
-  //   }
-
-  //   try {
-  //     toast.success("User registered successfully", {
-  //       position: "bottom-left",
-  //     });
-  //     navigate("/");
-  //   } catch (err: any) {
-  //     toast.error(err?.message, { position: "bottom-left" });
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
 
@@ -99,7 +77,7 @@ const RegisterForm = () => {
         toast.success("User registered successfully", {
           position: "bottom-left",
         });
-        navigate("/");
+        navigate("/auth/login");
       } else {
         toast.error("Failed to register user", { position: "bottom-left" });
       }
