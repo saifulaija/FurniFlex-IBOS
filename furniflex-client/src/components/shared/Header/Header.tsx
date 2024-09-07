@@ -18,7 +18,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const cart = useAppSelector((state) => state.cart);
 
-  const searchRef = useRef<HTMLInputElement | null>(null);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,12 +30,7 @@ const Header = () => {
     };
   }, []);
 
-  const handleSearch = useCallback(
-    (value: any) => {
-      navigate(`/?q=${encodeURIComponent(value)}`);
-    },
-    [navigate]
-  );
+
 
   
   const menuItems = [
