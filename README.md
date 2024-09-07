@@ -9,11 +9,11 @@ FurniFlex is a sophisticated e-commerce platform dedicated to offering a seamles
 ## Features
 
 ### Frontend
-1. *A comprehensive collection of chairs, ranging from office chairs, dining chairs, lounge chairs, and ergonomic chairs, categorized for easy browsing.
-2. *Customers must sign up or log in to purchase, ensuring a secure and personalized shopping experience.
-3. *Users can effortlessly add their desired chairs to the cart for immediate checkout.
-4. *FurniFlex supports secure payment options with integrated payment gateways.
-5. *Optimized for mobile, tablet, and desktop devices to ensure a seamless experience across all platforms.
+1. A comprehensive collection of chairs, ranging from office chairs, dining chairs, lounge chairs, and ergonomic chairs, categorized for easy browsing.
+2. Customers must sign up or log in to purchase, ensuring a secure and personalized shopping experience.
+3. Users can effortlessly add their desired chairs to the cart for immediate checkout.
+4. FurniFlex supports secure payment options with integrated payment gateways.
+5. Optimized for mobile, tablet, and desktop devices to ensure a seamless experience across all platforms.
 
 
 ### Backend
@@ -89,4 +89,4 @@ bash
 
 ## 🔗 Visit My Profile Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://saifulislam-portfolio-pro.vercel.app/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/reactjs-developer/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saiful-dev/)
