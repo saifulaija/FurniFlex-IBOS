@@ -34,6 +34,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { selectCurrentUser } from "@/redux/feature/auth/authSlice";
+import { Helmet } from "react-helmet-async";
 
 const ShoppingCart = () => {
   const user=useAppSelector(selectCurrentUser)
@@ -80,6 +81,9 @@ const ShoppingCart = () => {
 
   return (
     <div className="w-full py-10 px-4 md:p-10">
+      <Helmet>
+        <title>FurniFlex | Cart</title>
+      </Helmet>
       <Card className="max-w-7xl mx-auto flex flex-col">
         {cart.cartItems.length === 0 ? (
           <div className="text-center py-20">
@@ -198,7 +202,10 @@ const ShoppingCart = () => {
               </div>
               <div className="flex space-x-4 mt-4">
                 {user ? (
-                  <Button className={cn("w-full uppercase")} onClick={handleGotoCheckout}>
+                  <Button
+                    className={cn("w-full uppercase")}
+                    onClick={handleGotoCheckout}
+                  >
                     G0 to Checkout
                   </Button>
                 ) : (

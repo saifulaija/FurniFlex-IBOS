@@ -19,6 +19,7 @@ import {
 } from "@/redux/feature/product/cartSlice";
 import { formatMoney } from "@/utils/formatMoney";
 import CheckoutForm from "@/form/CheckoutForm";
+import { Helmet } from "react-helmet-async";
 
 const Checkout = () => {
   const cart = useAppSelector((state) => state.cart);
@@ -54,6 +55,9 @@ const Checkout = () => {
 
   return (
     <div className="w-full py-10 px-4 md:p-10">
+      <Helmet>
+        <title>FurniFlex | Checkout</title>
+      </Helmet>
       <Card className="max-w-5xl mx-auto p-6 md:p-15 flex flex-col">
         {cart.cartItems.length === 0 ? (
           <div className="text-center py-20">

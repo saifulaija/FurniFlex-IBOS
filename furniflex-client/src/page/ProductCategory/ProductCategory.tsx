@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/pagination";
 import { TQueryParam } from "@/types/global.type";
 import { useGetAllProductsQuery } from "@/redux/feature/product/productApi";
+import { Helmet } from "react-helmet-async";
 
 const ProductCategory = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
@@ -55,6 +56,9 @@ const ProductCategory = () => {
 
   return (
     <div className="container mx-auto px-4">
+      <Helmet>
+        <title>FurniFlex | Product-category</title>
+      </Helmet>
       {products?.data?.length === 0 ? (
         <NoDataFound />
       ) : (

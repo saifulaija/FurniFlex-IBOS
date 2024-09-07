@@ -5,6 +5,7 @@ import { useGetAllProductsQuery } from "@/redux/feature/product/productApi";
 import { TQueryParam } from "@/types/global.type";
 import { useState } from "react";
 import AllProductsCard from "./AllProductsCard";
+import { Helmet } from "react-helmet-async";
 
 
 const AllProducts = () => {
@@ -20,6 +21,9 @@ const AllProducts = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>FurniFlex | Products</title>
+      </Helmet>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 mt-10">
         {productsData?.data?.map((product: any) => (
           <AllProductsCard key={product._id} product={product} />

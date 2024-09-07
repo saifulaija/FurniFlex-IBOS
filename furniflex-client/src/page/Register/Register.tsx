@@ -1,10 +1,14 @@
 import assets from "@/assets";
 
 import RegisterForm from "@/form/RegisterForm";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   return (
     <div className="flex w-full h-screen">
+      <Helmet>
+        <title>FurniFlex | Register</title>
+      </Helmet>
       {/* Form Section */}
       <div className="flex-1 flex items-center justify-center  bg-white p-5">
         <div className="w-full max-w-md">

@@ -3,10 +3,14 @@ import Credential from "@/components/Credential/Credential";
 import MyDialog from "@/components/shadcn/MyDialog";
 import LoginForm from "@/form/LoginForm";
 import { ChevronRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   return (
     <div className="flex w-full h-screen">
+      <Helmet>
+        <title>FurniFlex | Login</title>
+      </Helmet>
       {/* Form Section */}
       <div className="flex-1 flex items-center justify-center  bg-white">
         <div className="w-full max-w-md">

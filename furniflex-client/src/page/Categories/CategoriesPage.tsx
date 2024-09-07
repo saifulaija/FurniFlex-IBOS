@@ -1,7 +1,7 @@
-
-
 import { TCategory } from "@/types/global.type";
 import Categories from "./Categories";
+import { Helmet } from "react-helmet-async";
+import { Title } from "@radix-ui/react-dialog";
 
 const CategoriesPage = () => {
   const categories: TCategory[] = [
@@ -39,6 +39,10 @@ const CategoriesPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FurniFlex | Product-category</title>
+      </Helmet>
+
       <Categories categories={categories} />
     </div>
   );

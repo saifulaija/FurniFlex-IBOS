@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import { Helmet } from "react-helmet-async";
 
 const OrderSuccess = () => {
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const OrderSuccess = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-12 px-6 sm:px-8 lg:px-10 ">
+      <Helmet>
+        <title>FurniFlex | Success-Order</title>
+      </Helmet>
       <div className="max-w-md w-full space-y-6 text-center">
         <CheckCircledIcon className="w-16 h-16 text-green-600 mx-auto" />
         <h1 className="text-3xl font-bold text-gray-900">
