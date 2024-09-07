@@ -3,6 +3,7 @@ import CartLayout from "@/components/layout/CartLayout";
 
 import { HomeLayout } from "@/components/layout/HomeLayout";
 import NotFound from "@/components/shared/NotFound/NotFound";
+import OrderSuccess from "@/components/shared/OrderSuccess/OrderSuccess";
 import AllProducts from "@/page/AllProducts/AllProducts";
 import Blog from "@/page/Blog/Blog";
 import Cart from "@/page/Cart/Cart";
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "/cart/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/cart/order-success",
+        element: <OrderSuccess />,
       },
     ],
   },

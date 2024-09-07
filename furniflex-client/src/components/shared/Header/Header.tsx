@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TextAlignCenterIcon} from "@radix-ui/react-icons";
+import { TextAlignCenterIcon } from "@radix-ui/react-icons";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import assets from "@/assets";
@@ -14,7 +14,6 @@ import { useAppSelector } from "@/redux/hooks";
 import AuthButton from "../AuthButton/AuthButton";
 
 const Header = () => {
- 
   const [scrolled, setScrolled] = useState(false);
   const cart = useAppSelector((state) => state.cart);
 
@@ -30,9 +29,8 @@ const Header = () => {
 
   const menuItems = [
     { label: "Home", path: "/", show: true },
-    { label: "Products", path: "/product", show: true },
-    { label: "Categories", path: "/product-categories", show: true },
-    { label: "Custom", path: "/product/custom", show: true },
+    { label: "Products", path: "/products", show: true },
+    { label: "Categories", path: "/categories", show: true },
     { label: "Blog", path: "/blog", show: true },
   ];
 

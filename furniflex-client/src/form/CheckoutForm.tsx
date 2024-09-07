@@ -8,31 +8,29 @@ import {
   FormControl,
   FormField,
   FormItem,
- 
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { useLocation, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { useLoginMutation } from "@/redux/feature/auth/authApi";
-import { useAppDispatch } from "@/redux/hooks";
-import { verifyToken } from "@/utils/verifyToken";
-import { TUser } from "@/types/global.type";
-import { setUser } from "@/redux/feature/auth/authSlice";
+import { selectCurrentUser } from "@/redux/feature/auth/authSlice";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { useCreateOrderMutation } from "@/redux/feature/order/orderApi";
+
+import { useAppSelector } from "@/redux/hooks";
 
 const formSchema = z.object({
   name: z.string().min(3, {
-    message: "Enter your first name",
+    message: "Enter your full name",
   }),
-  phone: z.string()
-    .min(10, { message: 'Must be a valid mobile number' })
-    .max(14, { message: 'Must be a valid mobile number' }),
+  phone: z
+    .string()
+    .min(10, { message: "Must be a valid mobile number" })
+    .max(14, { message: "Must be a valid mobile number" }),
   address: z.string().min(6, {
     message: "Enter a valid address",
   }),
@@ -42,40 +40,49 @@ const formSchema = z.object({
 });
 
 const CheckoutForm = () => {
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
+  const user = useAppSelector(selectCurrentUser);
+  const cart = useAppSelector((state) => state.cart);
 
-
-  const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from.pathname || "/";
-
-  const dispatch = useAppDispatch();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       phone: "",
-      address:""
+      address: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      //  login(userInfo);
+      // Prepare the payload by combining form values and cart data
+      const orderPayload = {
+        name: values.name,
+        phone: values.phone,
+        email: user?.email,
+        address: values.address,
+        description: values.description,
+        paymentSystem: "Cash on delivery",
+        totalPrice: cart.cartTotalAmount,
+        orderProduct: cart.cartItems.map((item: any) => ({
+          productId: item._id,
+          selectedQuantity: item.cartQuantity,
+          name: item.name,
+          price: item.price,
+          discount: item.discount,
+          image: item.image,
+        })),
+        orderNumber: `ORD${Date.now()}`,
+      };
 
-      const res = await login(values).unwrap();
+      // Make the API request to create the order
+      const res = await createOrder(orderPayload).unwrap();
       console.log(res);
 
-      const user = verifyToken(res.data.accessToken) as TUser;
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
-      toast.success("Logged In successfully", { position: "bottom-left" });
-
-      if (user.role === "user") {
-        navigate(from, { replace: true });
-      } else {
-        navigate("/");
-      }
+      toast.success("Order placed successfully", { position: "bottom-left" });
+      navigate("/cart/order-success");
     } catch (error) {
       toast.error((error as any)?.data?.message || "An error occurred", {
         position: "bottom-left",
